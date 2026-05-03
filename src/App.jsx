@@ -1,16 +1,16 @@
-import CompactProjectCard from './components/CompactProjectCard.jsx'
-import Header from './components/Header.jsx'
-import Hero from './components/Hero.jsx'
-import ProjectCard from './components/ProjectCard.jsx'
-import ProfileCard from './components/ProfileCard.jsx'
-import SectionTitle from './components/SectionTitle.jsx'
-import { projects } from './data/projects.js'
-import { profiles } from './data/profiles.js'
+import CompactProjectCard from "./components/CompactProjectCard.jsx";
+import Header from "./components/Header.jsx";
+import Hero from "./components/Hero.jsx";
+import ProjectCard from "./components/ProjectCard.jsx";
+import ProfileCard from "./components/ProfileCard.jsx";
+import SectionTitle from "./components/SectionTitle.jsx";
+import { projects } from "./data/projects.js";
+import { profiles } from "./data/profiles.js";
 
 export default function App() {
-  const featuredProject = projects[0]
-  const secondProject = projects[1]
-  const featuredProfile = profiles[0]
+  const featuredProject = projects[0];
+  const secondProject = projects[1];
+  const featuredProfile = profiles[0];
 
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100">
@@ -68,7 +68,12 @@ export default function App() {
               Hint:
               title={secondProject.title}
             */}
-            <CompactProjectCard />
+            <CompactProjectCard
+              title={secondProject.title}
+              category={secondProject.category}
+              proofScore={secondProject.proofScore}
+              ctaLabel="View profile card project"
+            />
           </div>
         </section>
 
@@ -82,19 +87,27 @@ export default function App() {
           <div className="mt-5 grid gap-3 text-sm text-violet-50 sm:grid-cols-3">
             <div className="rounded-2xl bg-slate-950/60 p-4">
               <p className="font-semibold">1. Compare prop styles</p>
-              <p className="mt-2 text-violet-100/75">ProjectCard receives project. CompactProjectCard receives title, category, proofScore, and ctaLabel separately.</p>
+              <p className="mt-2 text-violet-100/75">
+                ProjectCard receives project. CompactProjectCard receives title,
+                category, proofScore, and ctaLabel separately.
+              </p>
             </div>
             <div className="rounded-2xl bg-slate-950/60 p-4">
               <p className="font-semibold">2. Fill the TODO</p>
-              <p className="mt-2 text-violet-100/75">Pass values from secondProject to the empty CompactProjectCard.</p>
+              <p className="mt-2 text-violet-100/75">
+                Pass values from secondProject to the empty CompactProjectCard.
+              </p>
             </div>
             <div className="rounded-2xl bg-slate-950/60 p-4">
               <p className="font-semibold">3. Keep the diff focused</p>
-              <p className="mt-2 text-violet-100/75">Only edit src/App.jsx for this exercise. No Tailwind changes needed.</p>
+              <p className="mt-2 text-violet-100/75">
+                Only edit src/App.jsx for this exercise. No Tailwind changes
+                needed.
+              </p>
             </div>
           </div>
         </section>
       </div>
     </main>
-  )
+  );
 }
