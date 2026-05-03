@@ -19,4 +19,14 @@ export const projects = [
     proofScore: 64,
     tags: ["Props", "JSX", "Data"],
   },
+  {
+    id: 3,
+    title: "Project gallery list",
+    description:
+      "A small list section that teaches why repeating JSX should become array rendering with map.",
+    category: "List UI",
+    status: "Practice",
+    proofScore: 71,
+    tags: ["Map", "Key", "Lists"],
+  },
 ];
