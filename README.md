@@ -1,16 +1,70 @@
-# React + Vite
+# tinyproofs-react-practice
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A small React learning repo for building Tinyproofs-like UI pieces step by step.
 
-Currently, two official plugins are available:
+## Learning workflow
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+We will work like a tiny product team:
 
-## React Compiler
+1. ChatGPT creates a lesson branch with UI scaffolding and TODOs.
+2. You pull the branch locally.
+3. You complete the React learning task.
+4. You commit and push your change.
+5. ChatGPT reviews the diff and gives the next task.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+`main` should stay clean. Lesson work happens on branches like `lesson/01-components`.
 
-## Expanding the ESLint configuration
+## Lesson 01: JSX, components, props
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Branch: `lesson/01-components`
+
+Goal:
+
+- Understand how React UI is split into components.
+- Follow imports and exports across files.
+- Read object data through props.
+- Make one safe data edit, commit it, and push it.
+
+Your task:
+
+1. Pull the branch.
+2. Run the app.
+3. Open these files:
+   - `src/App.jsx`
+   - `src/components/ProjectCard.jsx`
+   - `src/components/ProfileCard.jsx`
+   - `src/data/projects.js`
+   - `src/data/profiles.js`
+4. Change one text value in `src/data/projects.js`.
+5. Commit and push.
+
+## Commands
+
+```bash
+git clone https://github.com/turanarican1985/tinyproofs-react-practice.git
+cd tinyproofs-react-practice
+git checkout lesson/01-components
+npm install
+npm run dev
+```
+
+After your edit:
+
+```bash
+git status
+git diff
+git add src/data/projects.js
+git commit -m "Update lesson 01 project data"
+git push origin lesson/01-components
+```
+
+## Git note for junior engineers
+
+Before every commit, run:
+
+```bash
+git status
+git diff
+```
+
+`git status` tells you which files changed. `git diff` shows the exact code changes. This habit prevents accidental commits.
