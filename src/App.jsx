@@ -42,10 +42,16 @@ export default function App() {
       tags: ["Form", "State", "Practice"],
     };
 
-    setProjectItems([...projectItems, newProject]);
+    setProjectItems((currentProjects) => [...projectItems, newProject]);
     setNewProjectTitle("");
     setNewProjectDescription("");
     setSelectedStatus("All");
+  }
+
+  function handleDeleteProject(projectId) {
+    setProjectItems((currentProjects) =>
+      currentProjects.filter((project) => project.id !== projectId),
+    );
   }
 
   const filteredProjects = projectItems.filter((project) => {
@@ -176,7 +182,10 @@ export default function App() {
             ))}
           </div>
           <div className="mt-5">
-            <ProjectGallery projects={filteredProjects} />
+            <ProjectGallery
+              projects={filteredProjects}
+              onDeleteProject={handleDeleteProject}
+            />
           </div>
         </section>
 

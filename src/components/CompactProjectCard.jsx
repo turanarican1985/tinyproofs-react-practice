@@ -1,8 +1,9 @@
 export default function CompactProjectCard({
-  title = 'Pass a title prop',
-  category = 'Pass a category prop',
+  title = "Pass a title prop",
+  category = "Pass a category prop",
   proofScore = 0,
-  ctaLabel = 'Pass a CTA label prop',
+  ctaLabel = "Pass a CTA label prop",
+  onDelete,
 }) {
   return (
     <article className="rounded-3xl border border-white/10 bg-slate-900/80 p-5 shadow-xl shadow-black/10 transition hover:-translate-y-0.5 hover:border-emerald-300/40">
@@ -13,11 +14,22 @@ export default function CompactProjectCard({
         <span className="text-sm font-bold text-white">{proofScore}/100</span>
       </div>
 
-      <h3 className="mt-5 text-xl font-bold tracking-tight text-white">{title}</h3>
+      <h3 className="mt-5 text-xl font-bold tracking-tight text-white">
+        {title}
+      </h3>
 
       <button className="mt-6 w-full rounded-2xl bg-white px-4 py-3 text-sm font-bold text-slate-950 transition hover:bg-emerald-200">
         {ctaLabel}
       </button>
+      {onDelete && (
+        <button
+          type="button"
+          onClick={onDelete}
+          className="mt-3 w-full rounded-2xl border border-red-300/30 px-4 py-3 text-sm font-bold text-red-200 transition hover:bg-red-300/10"
+        >
+          Delete project
+        </button>
+      )}
     </article>
-  )
+  );
 }
