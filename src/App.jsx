@@ -2,6 +2,7 @@ import CompactProjectCard from "./components/CompactProjectCard.jsx";
 import Header from "./components/Header.jsx";
 import Hero from "./components/Hero.jsx";
 import ProjectCard from "./components/ProjectCard.jsx";
+import ProjectGallery from "./components/ProjectGallery.jsx";
 import ProfileCard from "./components/ProfileCard.jsx";
 import SectionTitle from "./components/SectionTitle.jsx";
 import { projects } from "./data/projects.js";
@@ -60,14 +61,6 @@ export default function App() {
               ctaLabel="View featured project"
             />
 
-            {/*
-              TODO 01:
-              This second card intentionally shows fallback text.
-              Pass title, category, proofScore, and ctaLabel props from secondProject.
-
-              Hint:
-              title={secondProject.title}
-            */}
             <CompactProjectCard
               title={secondProject.title}
               category={secondProject.category}
@@ -77,32 +70,44 @@ export default function App() {
           </div>
         </section>
 
+        <section className="rounded-3xl border border-sky-300/20 bg-sky-300/10 p-5 sm:p-6">
+          <SectionTitle
+            eyebrow="Lesson 03"
+            title="List rendering with map"
+            description="ProjectGallery currently repeats the same component three times. Your task is to replace the repetition with projects.map(...)."
+          />
+
+          <div className="mt-5">
+            <ProjectGallery projects={projects} />
+          </div>
+        </section>
+
         <section className="rounded-3xl border border-dashed border-violet-400/40 bg-violet-400/10 p-5 sm:p-6">
           <SectionTitle
             eyebrow="Your turn"
-            title="Second React exercise"
-            description="Your task is to make the fallback CompactProjectCard use real data by passing individual props."
+            title="Third React exercise"
+            description="Your task is to replace repeated JSX with array rendering using .map() and a key prop."
           />
 
           <div className="mt-5 grid gap-3 text-sm text-violet-50 sm:grid-cols-3">
             <div className="rounded-2xl bg-slate-950/60 p-4">
-              <p className="font-semibold">1. Compare prop styles</p>
+              <p className="font-semibold">1. Find repetition</p>
               <p className="mt-2 text-violet-100/75">
-                ProjectCard receives project. CompactProjectCard receives title,
-                category, proofScore, and ctaLabel separately.
+                Open ProjectGallery.jsx and notice the three repeated
+                CompactProjectCard calls.
               </p>
             </div>
             <div className="rounded-2xl bg-slate-950/60 p-4">
-              <p className="font-semibold">2. Fill the TODO</p>
+              <p className="font-semibold">2. Use map</p>
               <p className="mt-2 text-violet-100/75">
-                Pass values from secondProject to the empty CompactProjectCard.
+                Replace repetition with projects.map((project) =&gt; ...).
               </p>
             </div>
             <div className="rounded-2xl bg-slate-950/60 p-4">
-              <p className="font-semibold">3. Keep the diff focused</p>
+              <p className="font-semibold">3. Add key</p>
               <p className="mt-2 text-violet-100/75">
-                Only edit src/App.jsx for this exercise. No Tailwind changes
-                needed.
+                Each rendered card needs key=&#123;project.id&#125; so React can track
+                list items.
               </p>
             </div>
           </div>
