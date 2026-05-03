@@ -93,7 +93,11 @@ export default function App() {
               <button
                 key={status}
                 onClick={() => setSelectedStatus(status)}
-                className="rounded-full border border-sky-300/30 px-4 py-2 text-sm font-semibold text-sky-100"
+                className={
+                  selectedStatus === status
+                    ? "rounded-full border border-sky-200 bg-sky-200 px-4 py-2 text-sm font-semibold text-slate-950"
+                    : "rounded-full border border-sky-300/30 px-4 py-2 text-sm font-semibold text-sky-100"
+                }
               >
                 {status}
               </button>
