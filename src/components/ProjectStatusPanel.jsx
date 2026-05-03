@@ -38,7 +38,6 @@ export default function ProjectStatusPanel({ project }) {
         ) : (
           <p>Practice project is here for learning.</p>
         )}
-        <p>Replace this placeholder with a status-specific message.</p>
       </div>
 
       <div className="mt-4 rounded-2xl bg-white/[0.04] p-4 text-sm text-slate-300">
@@ -51,7 +50,6 @@ export default function ProjectStatusPanel({ project }) {
           If the score is below 75, show nothing here.
         */}
         {project.proofScore >= 75 && <p>Strong proof score.</p>}
-        <p>Only show a strong-score message when proofScore is high enough.</p>
       </div>
     </article>
   );
