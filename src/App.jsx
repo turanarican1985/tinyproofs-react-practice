@@ -42,7 +42,7 @@ export default function App() {
       tags: ["Form", "State", "Practice"],
     };
 
-    setProjectItems((currentProjects) => [...projectItems, newProject]);
+    setProjectItems((currentProjects) => [...currentProjects, newProject]);
     setNewProjectTitle("");
     setNewProjectDescription("");
     setSelectedStatus("All");
