@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import CompactProjectCard from "./components/CompactProjectCard.jsx";
 import Header from "./components/Header.jsx";
 import Hero from "./components/Hero.jsx";
@@ -13,6 +15,15 @@ export default function App() {
   const featuredProject = projects[0];
   const secondProject = projects[1];
   const featuredProfile = profiles[0];
+
+  const [selectedStatus, setSelectedStatus] = useState("All");
+
+  const filteredProjects =
+    selectedStatus === "All"
+      ? projects
+      : projects.filter((project) => project.status === selectedStatus);
+
+  const statuses = ["All", "Featured", "Draft", "Practice"];
 
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100">
@@ -79,7 +90,7 @@ export default function App() {
           />
 
           <div className="mt-5">
-            <ProjectGallery projects={projects} />
+            <ProjectGallery projects={filteredProjects} />
           </div>
         </section>
 
