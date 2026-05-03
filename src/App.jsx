@@ -88,7 +88,17 @@ export default function App() {
             title="List rendering with map"
             description="ProjectGallery uses projects.map(...) to render every project from the array."
           />
-
+          <div className="mt-5 flex flex-wrap gap-2">
+            {statuses.map((status) => (
+              <button
+                key={status}
+                onClick={() => setSelectedStatus(status)}
+                className="rounded-full border border-sky-300/30 px-4 py-2 text-sm font-semibold text-sky-100"
+              >
+                {status}
+              </button>
+            ))}
+          </div>
           <div className="mt-5">
             <ProjectGallery projects={filteredProjects} />
           </div>
