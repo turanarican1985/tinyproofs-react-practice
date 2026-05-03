@@ -16,7 +16,7 @@ export default function ProjectSection({
   handleDeleteProject,
 }) {
   return (
-    <section className="rounded-3xl border border-sky-300/20 bg-sky-300/10 p-5 sm:p-6">
+    <section className="rounded-3xl border border-sky-200 bg-sky-50 p-5 sm:p-6">
       <SectionTitle
         eyebrow="Lesson 03"
         title="List rendering with map"
@@ -27,29 +27,29 @@ export default function ProjectSection({
           value={searchQuery}
           onChange={(event) => setSearchQuery(event.target.value)}
           placeholder="Search projects..."
-          className="mt-5 w-full rounded-2xl border border-sky-300/30 bg-slate-950/60 px-4 py-3 text-sm text-sky-50 outline-none placeholder:text-sky-100/40"
+          className="mt-5 w-full rounded-2xl border border-sky-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none placeholder:text-slate-400 focus:border-sky-400"
         />
         <form
           onSubmit={handleAddProject}
-          className="mt-5 grid gap-3 rounded-3xl border border-sky-300/20 bg-slate-950/40 p-4 md:grid-cols-[1fr_1fr_auto]"
+          className="mt-5 grid gap-3 rounded-3xl border border-sky-200 bg-white p-4 shadow-sm md:grid-cols-[1fr_1fr_auto]"
         >
           <input
             value={newProjectTitle}
             onChange={(event) => setNewProjectTitle(event.target.value)}
             placeholder="New project title"
-            className="rounded-2xl border border-sky-300/30 bg-slate-950/60 px-4 py-3 text-sm text-sky-50 outline-none placeholder:text-sky-100/40"
+            className="rounded-2xl border border-sky-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none placeholder:text-slate-400 focus:border-sky-400"
           />
 
           <input
             value={newProjectDescription}
             onChange={(event) => setNewProjectDescription(event.target.value)}
             placeholder="New project description"
-            className="rounded-2xl border border-sky-300/30 bg-slate-950/60 px-4 py-3 text-sm text-sky-50 outline-none placeholder:text-sky-100/40"
+            className="rounded-2xl border border-sky-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none placeholder:text-slate-400 focus:border-sky-400"
           />
 
           <button
             type="submit"
-            className="rounded-2xl bg-sky-200 px-5 py-3 text-sm font-bold text-slate-950"
+            className="rounded-2xl bg-sky-600 px-5 py-3 text-sm font-bold text-white transition hover:bg-sky-700"
           >
             Add project
           </button>
@@ -60,8 +60,8 @@ export default function ProjectSection({
             onClick={() => setSelectedStatus(status)}
             className={
               selectedStatus === status
-                ? "rounded-full border border-sky-200 bg-sky-200 px-4 py-2 text-sm font-semibold text-slate-950"
-                : "rounded-full border border-sky-300/30 px-4 py-2 text-sm font-semibold text-sky-100"
+                ? "rounded-full border border-sky-600 bg-sky-600 px-4 py-2 text-sm font-semibold text-white"
+                : "rounded-full border border-sky-200 bg-white px-4 py-2 text-sm font-semibold text-sky-700 transition hover:border-sky-400"
             }
           >
             {status}
