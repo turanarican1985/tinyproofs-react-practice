@@ -17,11 +17,21 @@ export default function App() {
   const featuredProfile = profiles[0];
 
   const [selectedStatus, setSelectedStatus] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredProjects =
-    selectedStatus === "All"
-      ? projects
-      : projects.filter((project) => project.status === selectedStatus);
+  const filteredProjects = projects.filter((project) => {
+    const matchesStatus =
+      selectedStatus === "All" || project.status === selectedStatus;
+
+    const normalizedSearch = searchQuery.trim().toLowerCase();
+
+    const matchesSearch =
+      normalizedSearch === "" ||
+      project.title.toLowerCase().includes(normalizedSearch) ||
+      project.description.toLowerCase().includes(normalizedSearch);
+
+    return matchesStatus && matchesSearch;
+  });
 
   const statuses = ["All", "Featured", "Draft", "Practice"];
 
@@ -89,6 +99,12 @@ export default function App() {
             description="ProjectGallery uses projects.map(...) to render every project from the array."
           />
           <div className="mt-5 flex flex-wrap gap-2">
+            <input
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
+              placeholder="Search projects..."
+              className="mt-5 w-full rounded-2xl border border-sky-300/30 bg-slate-950/60 px-4 py-3 text-sm text-sky-50 outline-none placeholder:text-sky-100/40"
+            />
             {statuses.map((status) => (
               <button
                 key={status}
