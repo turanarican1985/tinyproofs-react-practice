@@ -1,3 +1,4 @@
+import CompactProjectCard from './components/CompactProjectCard.jsx'
 import Header from './components/Header.jsx'
 import Hero from './components/Hero.jsx'
 import ProjectCard from './components/ProjectCard.jsx'
@@ -8,6 +9,7 @@ import { profiles } from './data/profiles.js'
 
 export default function App() {
   const featuredProject = projects[0]
+  const secondProject = projects[1]
   const featuredProfile = profiles[0]
 
   return (
@@ -22,15 +24,10 @@ export default function App() {
             <SectionTitle
               eyebrow="Lesson 01"
               title="Featured project"
-              description="This card is ready visually. Your task is to understand how the data moves into it with props."
+              description="This card receives one full project object as a prop."
             />
 
             <div className="mt-5">
-              {/*
-                TODO 01:
-                ProjectCard currently receives one project object from data/projects.js.
-                Open ProjectCard.jsx and trace where each value is rendered.
-              */}
               <ProjectCard project={featuredProject} />
             </div>
           </div>
@@ -43,35 +40,57 @@ export default function App() {
             />
 
             <div className="mt-5">
-              {/*
-                TODO 02:
-                ProfileCard receives one profile object from data/profiles.js.
-                Later you will render multiple ProfileCard components with .map().
-              */}
               <ProfileCard profile={featuredProfile} />
             </div>
+          </div>
+        </section>
+
+        <section className="rounded-3xl border border-emerald-300/20 bg-emerald-300/10 p-5 sm:p-6">
+          <SectionTitle
+            eyebrow="Lesson 02"
+            title="Props practice"
+            description="This time the component does not receive one project object. It receives separate props like title, category, proofScore, and ctaLabel."
+          />
+
+          <div className="mt-5 grid gap-4 md:grid-cols-2">
+            <CompactProjectCard
+              title={featuredProject.title}
+              category={featuredProject.category}
+              proofScore={featuredProject.proofScore}
+              ctaLabel="View featured project"
+            />
+
+            {/*
+              TODO 01:
+              This second card intentionally shows fallback text.
+              Pass title, category, proofScore, and ctaLabel props from secondProject.
+
+              Hint:
+              title={secondProject.title}
+            */}
+            <CompactProjectCard />
           </div>
         </section>
 
         <section className="rounded-3xl border border-dashed border-violet-400/40 bg-violet-400/10 p-5 sm:p-6">
           <SectionTitle
             eyebrow="Your turn"
-            title="First React exercise"
-            description="Do not touch Tailwind yet. Focus on JSX, components, imports, exports, props, and reading data from objects."
+            title="Second React exercise"
+            description="Your task is to make the fallback CompactProjectCard use real data by passing individual props."
           />
 
           <div className="mt-5 grid gap-3 text-sm text-violet-50 sm:grid-cols-3">
             <div className="rounded-2xl bg-slate-950/60 p-4">
-              <p className="font-semibold">1. Trace imports</p>
-              <p className="mt-2 text-violet-100/75">Find where Header, Hero, ProjectCard, ProfileCard, and SectionTitle come from.</p>
+              <p className="font-semibold">1. Compare prop styles</p>
+              <p className="mt-2 text-violet-100/75">ProjectCard receives project. CompactProjectCard receives title, category, proofScore, and ctaLabel separately.</p>
             </div>
             <div className="rounded-2xl bg-slate-950/60 p-4">
-              <p className="font-semibold">2. Read props</p>
-              <p className="mt-2 text-violet-100/75">Open ProjectCard.jsx and ProfileCard.jsx. Match every rendered field to the data files.</p>
+              <p className="font-semibold">2. Fill the TODO</p>
+              <p className="mt-2 text-violet-100/75">Pass values from secondProject to the empty CompactProjectCard.</p>
             </div>
             <div className="rounded-2xl bg-slate-950/60 p-4">
-              <p className="font-semibold">3. Make one safe edit</p>
-              <p className="mt-2 text-violet-100/75">Change one value in data/projects.js, run the app, then commit and push.</p>
+              <p className="font-semibold">3. Keep the diff focused</p>
+              <p className="mt-2 text-violet-100/75">Only edit src/App.jsx for this exercise. No Tailwind changes needed.</p>
             </div>
           </div>
         </section>
