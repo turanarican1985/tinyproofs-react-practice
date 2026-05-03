@@ -71,14 +71,14 @@ export default function App() {
   const statuses = ["All", "Featured", "Draft", "Practice"];
 
   return (
-    <main className="min-h-screen bg-slate-950 text-slate-100">
+    <main className="min-h-screen bg-slate-50 text-slate-950">
       <Header />
 
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-5 py-8 sm:px-8 lg:px-10">
         <Hero />
 
         <section className="grid gap-5 lg:grid-cols-[1.4fr_0.9fr]">
-          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-5 shadow-2xl shadow-black/20 sm:p-6">
+          <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-lg shadow-slate-200/70 sm:p-6">
             <SectionTitle
               eyebrow="Lesson 01"
               title="Featured project"
@@ -90,7 +90,7 @@ export default function App() {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-5 shadow-2xl shadow-black/20 sm:p-6">
+          <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-lg shadow-slate-200/70 sm:p-6">
             <SectionTitle
               eyebrow="Profile"
               title="Featured builder"
@@ -103,7 +103,7 @@ export default function App() {
           </div>
         </section>
 
-        <section className="rounded-3xl border border-emerald-300/20 bg-emerald-300/10 p-5 sm:p-6">
+        <section className="rounded-3xl border border-emerald-200 bg-emerald-50 p-5 sm:p-6">
           <SectionTitle
             eyebrow="Lesson 02"
             title="Props practice"
@@ -140,7 +140,7 @@ export default function App() {
           filteredProjects={filteredProjects}
           handleDeleteProject={handleDeleteProject}
         />
-        <section className="rounded-3xl border border-amber-300/20 bg-amber-300/10 p-5 sm:p-6">
+        <section className="rounded-3xl border border-amber-200 bg-amber-50 p-5 sm:p-6">
           <SectionTitle
             eyebrow="Lesson 04"
             title="Conditional rendering"
@@ -154,31 +154,31 @@ export default function App() {
           </div>
         </section>
 
-        <section className="rounded-3xl border border-dashed border-violet-400/40 bg-violet-400/10 p-5 sm:p-6">
+        <section className="rounded-3xl border border-dashed border-violet-200 bg-violet-50 p-5 sm:p-6">
           <SectionTitle
             eyebrow="Your turn"
             title="Fourth React exercise"
             description="Your task is to replace placeholder text with conditional rendering inside ProjectStatusPanel.jsx."
           />
 
-          <div className="mt-5 grid gap-3 text-sm text-violet-50 sm:grid-cols-3">
-            <div className="rounded-2xl bg-slate-950/60 p-4">
-              <p className="font-semibold">1. Status condition</p>
-              <p className="mt-2 text-violet-100/75">
+          <div className="mt-5 grid gap-3 text-sm text-slate-700 sm:grid-cols-3">
+            <div className="rounded-2xl bg-white p-4 shadow-sm">
+              <p className="font-semibold text-slate-950">1. Status condition</p>
+              <p className="mt-2 text-slate-600">
                 Show one message for Featured, one for Draft, and one fallback
                 message for everything else.
               </p>
             </div>
-            <div className="rounded-2xl bg-slate-950/60 p-4">
-              <p className="font-semibold">2. Score condition</p>
-              <p className="mt-2 text-violet-100/75">
+            <div className="rounded-2xl bg-white p-4 shadow-sm">
+              <p className="font-semibold text-slate-950">2. Score condition</p>
+              <p className="mt-2 text-slate-600">
                 Show the strong-score message only when proofScore is at least
                 75.
               </p>
             </div>
-            <div className="rounded-2xl bg-slate-950/60 p-4">
-              <p className="font-semibold">3. Keep scope small</p>
-              <p className="mt-2 text-violet-100/75">
+            <div className="rounded-2xl bg-white p-4 shadow-sm">
+              <p className="font-semibold text-slate-950">3. Keep scope small</p>
+              <p className="mt-2 text-slate-600">
                 Only edit src/components/ProjectStatusPanel.jsx for this
                 exercise.
               </p>
