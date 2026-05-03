@@ -3,6 +3,7 @@ import Header from "./components/Header.jsx";
 import Hero from "./components/Hero.jsx";
 import ProjectCard from "./components/ProjectCard.jsx";
 import ProjectGallery from "./components/ProjectGallery.jsx";
+import ProjectStatusPanel from "./components/ProjectStatusPanel.jsx";
 import ProfileCard from "./components/ProfileCard.jsx";
 import SectionTitle from "./components/SectionTitle.jsx";
 import { projects } from "./data/projects.js";
@@ -74,7 +75,7 @@ export default function App() {
           <SectionTitle
             eyebrow="Lesson 03"
             title="List rendering with map"
-            description="ProjectGallery currently repeats the same component three times. Your task is to replace the repetition with projects.map(...)."
+            description="ProjectGallery uses projects.map(...) to render every project from the array."
           />
 
           <div className="mt-5">
@@ -82,32 +83,47 @@ export default function App() {
           </div>
         </section>
 
+        <section className="rounded-3xl border border-amber-300/20 bg-amber-300/10 p-5 sm:p-6">
+          <SectionTitle
+            eyebrow="Lesson 04"
+            title="Conditional rendering"
+            description="ProjectStatusPanel has placeholder messages. Your task is to show different UI depending on project.status and project.proofScore."
+          />
+
+          <div className="mt-5 grid gap-4 md:grid-cols-3">
+            {projects.map((project) => (
+              <ProjectStatusPanel key={project.id} project={project} />
+            ))}
+          </div>
+        </section>
+
         <section className="rounded-3xl border border-dashed border-violet-400/40 bg-violet-400/10 p-5 sm:p-6">
           <SectionTitle
             eyebrow="Your turn"
-            title="Third React exercise"
-            description="Your task is to replace repeated JSX with array rendering using .map() and a key prop."
+            title="Fourth React exercise"
+            description="Your task is to replace placeholder text with conditional rendering inside ProjectStatusPanel.jsx."
           />
 
           <div className="mt-5 grid gap-3 text-sm text-violet-50 sm:grid-cols-3">
             <div className="rounded-2xl bg-slate-950/60 p-4">
-              <p className="font-semibold">1. Find repetition</p>
+              <p className="font-semibold">1. Status condition</p>
               <p className="mt-2 text-violet-100/75">
-                Open ProjectGallery.jsx and notice the three repeated
-                CompactProjectCard calls.
+                Show one message for Featured, one for Draft, and one fallback
+                message for everything else.
               </p>
             </div>
             <div className="rounded-2xl bg-slate-950/60 p-4">
-              <p className="font-semibold">2. Use map</p>
+              <p className="font-semibold">2. Score condition</p>
               <p className="mt-2 text-violet-100/75">
-                Replace repetition with projects.map((project) =&gt; ...).
+                Show the strong-score message only when proofScore is at least
+                75.
               </p>
             </div>
             <div className="rounded-2xl bg-slate-950/60 p-4">
-              <p className="font-semibold">3. Add key</p>
+              <p className="font-semibold">3. Keep scope small</p>
               <p className="mt-2 text-violet-100/75">
-                Each rendered card needs key=&#123;project.id&#125; so React can track
-                list items.
+                Only edit src/components/ProjectStatusPanel.jsx for this
+                exercise.
               </p>
             </div>
           </div>
