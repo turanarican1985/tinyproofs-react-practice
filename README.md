@@ -12,7 +12,7 @@ We will work like a tiny product team:
 4. You commit and push your change.
 5. ChatGPT reviews the diff and gives the next task.
 
-`main` should stay clean. Lesson work happens on branches like `lesson/01-components` and `lesson/02-props`.
+`main` should stay clean. Lesson work happens on branches like `lesson/01-components`, `lesson/02-props`, and `lesson/03-list-rendering`.
 
 ## Lesson 01: JSX, components, props
 
@@ -27,7 +27,7 @@ Goal:
 
 ## Lesson 02: props practice
 
-Branch: `lesson/02-props`
+Status: merged into `main`.
 
 Goal:
 
@@ -35,34 +35,44 @@ Goal:
 - Understand default prop values.
 - Keep a commit focused on one learning task.
 
+## Lesson 03: list rendering with map
+
+Branch: `lesson/03-list-rendering`
+
+Goal:
+
+- Replace repeated JSX with `array.map(...)`.
+- Learn why React list items need a `key` prop.
+- Keep the rendered UI the same while improving the code structure.
+
 Files to inspect:
 
 - `src/App.jsx`
+- `src/components/ProjectGallery.jsx`
 - `src/components/CompactProjectCard.jsx`
 - `src/data/projects.js`
 
 Your task:
 
-1. Pull the latest branches.
-2. Check out `lesson/02-props`.
-3. Open `src/App.jsx`.
-4. Find the empty `<CompactProjectCard />` under `TODO 01`.
-5. Pass these props from `secondProject`:
-   - `title`
-   - `category`
-   - `proofScore`
-   - `ctaLabel`
-6. Commit and push only `src/App.jsx`.
+1. Pull the latest `main`.
+2. Check out `lesson/03-list-rendering`.
+3. Open `src/components/ProjectGallery.jsx`.
+4. Replace the three repeated `<CompactProjectCard />` calls with `projects.map(...)`.
+5. Add `key={project.id}` to the rendered card.
+6. Commit and push only `src/components/ProjectGallery.jsx`.
 
 Expected idea:
 
 ```jsx
-<CompactProjectCard
-  title={secondProject.title}
-  category={secondProject.category}
-  proofScore={secondProject.proofScore}
-  ctaLabel="View profile card project"
-/>
+{projects.map((project) => (
+  <CompactProjectCard
+    key={project.id}
+    title={project.title}
+    category={project.category}
+    proofScore={project.proofScore}
+    ctaLabel={`Open ${project.title}`}
+  />
+))}
 ```
 
 ## Commands
@@ -71,7 +81,7 @@ Expected idea:
 git checkout main
 git pull origin main
 git fetch origin
-git checkout lesson/02-props
+git checkout lesson/03-list-rendering
 npm install
 npm run dev
 ```
@@ -81,9 +91,9 @@ After your edit:
 ```bash
 git status
 git diff
-git add src/App.jsx
-git commit -m "Complete lesson 02 props exercise"
-git push origin lesson/02-props
+git add src/components/ProjectGallery.jsx
+git commit -m "Complete lesson 03 list rendering exercise"
+git push origin lesson/03-list-rendering
 ```
 
 ## Git note for junior engineers
@@ -97,4 +107,4 @@ git diff
 
 `git status` tells you which files changed. `git diff` shows the exact code changes. This habit prevents accidental commits.
 
-For this lesson, the important Git habit is **small scope**: only `src/App.jsx` should be in your commit.
+For this lesson, the important Git habit is **small scope**: only `src/components/ProjectGallery.jsx` should be in your learner commit.
