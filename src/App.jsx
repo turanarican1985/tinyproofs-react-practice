@@ -4,7 +4,6 @@ import CompactProjectCard from "./components/CompactProjectCard.jsx";
 import Header from "./components/Header.jsx";
 import Hero from "./components/Hero.jsx";
 import ProjectCard from "./components/ProjectCard.jsx";
-import ProjectGallery from "./components/ProjectGallery.jsx";
 import ProjectStatusPanel from "./components/ProjectStatusPanel.jsx";
 import ProfileCard from "./components/ProfileCard.jsx";
 import SectionTitle from "./components/SectionTitle.jsx";
