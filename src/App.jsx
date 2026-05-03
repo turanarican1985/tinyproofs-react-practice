@@ -18,8 +18,37 @@ export default function App() {
 
   const [selectedStatus, setSelectedStatus] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const [projectItems, setProjectItems] = useState(projects);
+  const [newProjectTitle, setNewProjectTitle] = useState("");
+  const [newProjectDescription, setNewProjectDescription] = useState("");
 
-  const filteredProjects = projects.filter((project) => {
+  function handleAddProject(event) {
+    event.preventDefault();
+
+    const trimmedTitle = newProjectTitle.trim();
+    const trimmedDescription = newProjectDescription.trim();
+
+    if (trimmedTitle === "" || trimmedDescription === "") {
+      return;
+    }
+
+    const newProject = {
+      id: Date.now(),
+      title: trimmedTitle,
+      description: trimmedDescription,
+      category: "User Added",
+      status: "Practice",
+      proofScore: 50,
+      tags: ["Form", "State", "Practice"],
+    };
+
+    setProjectItems([...projectItems, newProject]);
+    setNewProjectTitle("");
+    setNewProjectDescription("");
+    setSelectedStatus("All");
+  }
+
+  const filteredProjects = projectItems.filter((project) => {
     const matchesStatus =
       selectedStatus === "All" || project.status === selectedStatus;
 
@@ -105,6 +134,33 @@ export default function App() {
               placeholder="Search projects..."
               className="mt-5 w-full rounded-2xl border border-sky-300/30 bg-slate-950/60 px-4 py-3 text-sm text-sky-50 outline-none placeholder:text-sky-100/40"
             />
+            <form
+              onSubmit={handleAddProject}
+              className="mt-5 grid gap-3 rounded-3xl border border-sky-300/20 bg-slate-950/40 p-4 md:grid-cols-[1fr_1fr_auto]"
+            >
+              <input
+                value={newProjectTitle}
+                onChange={(event) => setNewProjectTitle(event.target.value)}
+                placeholder="New project title"
+                className="rounded-2xl border border-sky-300/30 bg-slate-950/60 px-4 py-3 text-sm text-sky-50 outline-none placeholder:text-sky-100/40"
+              />
+
+              <input
+                value={newProjectDescription}
+                onChange={(event) =>
+                  setNewProjectDescription(event.target.value)
+                }
+                placeholder="New project description"
+                className="rounded-2xl border border-sky-300/30 bg-slate-950/60 px-4 py-3 text-sm text-sky-50 outline-none placeholder:text-sky-100/40"
+              />
+
+              <button
+                type="submit"
+                className="rounded-2xl bg-sky-200 px-5 py-3 text-sm font-bold text-slate-950"
+              >
+                Add project
+              </button>
+            </form>
             {statuses.map((status) => (
               <button
                 key={status}
@@ -132,7 +188,7 @@ export default function App() {
           />
 
           <div className="mt-5 grid gap-4 md:grid-cols-3">
-            {projects.map((project) => (
+            {projectItems.map((project) => (
               <ProjectStatusPanel key={project.id} project={project} />
             ))}
           </div>
