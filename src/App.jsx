@@ -54,18 +54,22 @@ export default function App() {
     );
   }
 
+  const normalizedSearch = searchQuery.trim().toLowerCase();
+  function projectMatchesSearch(project) {
+    if (normalizedSearch === "") {
+      return true;
+    }
+
+    return (
+      project.title.toLowerCase().includes(normalizedSearch) ||
+      project.description.toLowerCase().includes(normalizedSearch)
+    );
+  }
   const filteredProjects = projectItems.filter((project) => {
     const matchesStatus =
       selectedStatus === "All" || project.status === selectedStatus;
 
-    const normalizedSearch = searchQuery.trim().toLowerCase();
-
-    const matchesSearch =
-      normalizedSearch === "" ||
-      project.title.toLowerCase().includes(normalizedSearch) ||
-      project.description.toLowerCase().includes(normalizedSearch);
-
-    return matchesStatus && matchesSearch;
+    return matchesStatus && projectMatchesSearch(project);
   });
 
   const statuses = ["All", "Featured", "Draft", "Practice"];
@@ -163,7 +167,9 @@ export default function App() {
 
           <div className="mt-5 grid gap-3 text-sm text-slate-700 sm:grid-cols-3">
             <div className="rounded-2xl bg-white p-4 shadow-sm">
-              <p className="font-semibold text-slate-950">1. Status condition</p>
+              <p className="font-semibold text-slate-950">
+                1. Status condition
+              </p>
               <p className="mt-2 text-slate-600">
                 Show one message for Featured, one for Draft, and one fallback
                 message for everything else.
@@ -177,7 +183,9 @@ export default function App() {
               </p>
             </div>
             <div className="rounded-2xl bg-white p-4 shadow-sm">
-              <p className="font-semibold text-slate-950">3. Keep scope small</p>
+              <p className="font-semibold text-slate-950">
+                3. Keep scope small
+              </p>
               <p className="mt-2 text-slate-600">
                 Only edit src/components/ProjectStatusPanel.jsx for this
                 exercise.
