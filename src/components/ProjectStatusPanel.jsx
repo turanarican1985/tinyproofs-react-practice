@@ -31,6 +31,13 @@ export default function ProjectStatusPanel({ project }) {
 
           You can use && blocks or a ternary expression.
         */}
+        {project.status === "Featured" ? (
+          <p>Featured project is ready to highlight.</p>
+        ) : project.status === "Draft" ? (
+          <p>Draft project still needs polish.</p>
+        ) : (
+          <p>Practice project is here for learning.</p>
+        )}
         <p>Replace this placeholder with a status-specific message.</p>
       </div>
 
@@ -43,6 +50,7 @@ export default function ProjectStatusPanel({ project }) {
 
           If the score is below 75, show nothing here.
         */}
+        {project.proofScore >= 75 && <p>Strong proof score.</p>}
         <p>Only show a strong-score message when proofScore is high enough.</p>
       </div>
     </article>
